@@ -3,7 +3,7 @@ import { HelloWordComponent } from './hello-word/hello-word.component';
 
 export const appRoutes: Route[] = [
     {
-        path: 'helloword',
+        path: '',
         component: HelloWordComponent,
         pathMatch: 'full',
     },
