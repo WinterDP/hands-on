@@ -13,7 +13,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "generated/my-api-types": ["generated/my-api-types/src/index.ts"]
+    },
     "useDefineForClassFields": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
