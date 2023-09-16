@@ -7,7 +7,7 @@
 
 ## Start the app
 
-To start the development server run `nx serve HandsOn`. Open your browser and navigate to http://localhost:4200/. Happy coding!
+To start the development server run `nx serve hands-on`. Open your browser and navigate to http://localhost:4200/. Happy coding!
 
 
 ## Generate code
@@ -61,3 +61,23 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 - [Join the community](https://nx.dev/community)
 - [Subscribe to the Nx Youtube Channel](https://www.youtube.com/@nxdevtools)
 - [Follow us on Twitter](https://twitter.com/nxdevtools)
+
+## Start the backend
+
+To start the development server run `nx serve my-api`. Open your browser and navigate to http://localhost:4200/. Happy coding!
+
+
+## Commit n branch standard
+
+tree based like method
+branch: 
+  commit-type/commit_description
+commit:
+ [commit_type] - "commit description"
+
+commit-type:
+  FEAT - New feature
+  FIX - Correction
+  IMP - Improvement of something
+  REM - removing things
+  WIP - Work in progress
