@@ -70,14 +70,18 @@ To start the development server run `nx serve my-api`. Open your browser and nav
 ## Commit n branch standard
 
 tree based like method
+
 branch: 
+
   commit-type/commit_description
+  
 commit:
- [commit_type] - "commit description"
+
+  [commit_type] - "commit description"
 
 commit-type:
-  FEAT - New feature
-  FIX - Correction
-  IMP - Improvement of something
-  REM - removing things
-  WIP - Work in progress
+- FEAT - New feature
+- FIX - Correction
+- IMP - Improvement of something
+- REM - removing things
+- WIP - Work in progress
