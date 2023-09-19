@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
-import { HelloWordComponent } from './hello-word/hello-word.component';
+import { HelloWorldComponent } from './hello-world/hello-world.component';
 
 export const appRoutes: Route[] = [
     {
         path: '',
-        component: HelloWordComponent,
+        component: HelloWorldComponent,
         pathMatch: 'full',
     },
 
