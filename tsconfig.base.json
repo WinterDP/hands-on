@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "master-page-lib": ["libs/ui/src/index.ts"]
+      "master-page-lib": ["libs/ui/src/index.ts"],
+      "navigation-lib": ["libs/ui/navigation-lib/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
