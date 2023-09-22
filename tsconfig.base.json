@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "footer-lib": ["libs/ui/footer-lib/src/index.ts"],
       "master-page-lib": ["libs/ui/src/index.ts"],
       "navigation-lib": ["libs/ui/navigation-lib/src/index.ts"]
     }
