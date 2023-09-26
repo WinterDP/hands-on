@@ -16,12 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "footer": [
-        "libs/master-page-lib/ui/master-page/src/lib/footer/src/index.ts"
+        "libs/ui/master-page/src/lib/footer/src/index.ts"
       ],
-      "master-page": ["libs/master-page-lib/ui/master-page/src/index.ts"],
+      "master-page": ["libs/ui/master-page/src/index.ts"],
       "master-page-lib": ["libs/ui/src/index.ts"],
       "navigation": [
-        "libs/master-page-lib/ui/master-page/src/lib/navigation/src/index.ts"
+        "libs/ui/master-page/src/lib/navigation/src/index.ts"
       ]
     }
   },

@@ -9,7 +9,7 @@ bootstrapApplication(AppComponent,{
     provideRouter([
       {
         path: 'master',
-        loadChildren: () => import('libs/master-page-lib/ui/master-page/src/lib/lib.routes').then(r => r.MASTER_PAGE_ROUTES)
+        loadChildren: () => import('libs/ui/master-page/src/lib/lib.routes').then(r => r.MASTER_PAGE_ROUTES)
         // Lazy load the master page library only when needed, avoiding slowing down the loading process.
       },
       {
