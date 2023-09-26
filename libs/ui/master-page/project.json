@@ -1,7 +1,7 @@
 {
-  "name": "footer",
-  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/master-page-lib/ui/master-page/src/lib/footer/src",
+  "name": "master-page",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ui/master-page/src",
   "prefix": "lib",
   "tags": ["ui"],
   "projectType": "library",
@@ -10,7 +10,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/master-page-lib/ui/master-page/src/lib/footer/jest.config.ts",
+        "jestConfig": "libs/ui/master-page/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -25,8 +25,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/master-page-lib/ui/master-page/src/lib/footer/**/*.ts",
-          "libs/master-page-lib/ui/master-page/src/lib/footer/**/*.html"
+          "libs/ui/master-page/**/*.ts",
+          "libs/ui/master-page/**/*.html"
         ]
       }
     }

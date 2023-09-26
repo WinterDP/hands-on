@@ -1,10 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'footer',
-  preset: '../../../../../../../jest.preset.js',
+  displayName: 'master-page',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory:
-    '../../../../../../../coverage/libs/master-page-lib/ui/master-page/src/lib/footer',
+  coverageDirectory: '../../../../coverage/libs/ui/master-page',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
