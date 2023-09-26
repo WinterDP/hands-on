@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MasterPageLibComponent } from './master-page-lib.component';
+import { FooterComponent } from './footer.component';
 
-describe('MasterPageLibComponent', () => {
-  let component: MasterPageLibComponent;
-  let fixture: ComponentFixture<MasterPageLibComponent>;
+describe('FooterComponent', () => {
+  let component: FooterComponent;
+  let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MasterPageLibComponent],
+      imports: [FooterComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MasterPageLibComponent);
+    fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
