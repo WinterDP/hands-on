@@ -2,10 +2,67 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
-import { importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MsalInterceptorConfiguration, MsalGuardConfiguration, MSAL_GUARD_CONFIG, MSAL_INTERCEPTOR_CONFIG, MsalService, MsalGuard, MsalBroadcastService } from '@azure/msal-angular';
+import { IPublicClientApplication, PublicClientApplication, InteractionType, } from '@azure/msal-browser';
+import {  HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+//import { environment } from '../environments/environment';
+
+export function MSALInstanceFactory(): IPublicClientApplication{
+  return new PublicClientApplication({ 
+    auth: {
+      clientId: 'fae13158-a7c9-4fd7-b59a-1193297b3fd0',
+      redirectUri: 'http://localhost:4200'
+    },
+    system: {
+        allowNativeBroker: false, // Disables native brokering support
+    }
+  })
+}
+
+export function MSALGuardConfigFactory(): MsalGuardConfiguration {
+  return { 
+    interactionType: InteractionType.Redirect,
+    authRequest: {
+      // scopes: [...environment.apiConfig.scopes]
+    },
+    loginFailedRoute: '/login-failed'
+  };
+}
+
+export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, Array<string>>();
+  //protectedResourceMap.set(environment.apiConfig.uri, environment.apiConfig.scopes);
+
+  return {
+    interactionType: InteractionType.Redirect,
+    protectedResourceMap
+  };
+}
 
 bootstrapApplication(AppComponent,{
   providers: [
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
+    },
+    {
+        provide: MSAL_INSTANCE,
+        useFactory: MSALInstanceFactory
+    },
+    {
+        provide: MSAL_GUARD_CONFIG,
+        useFactory: MSALGuardConfigFactory
+    },
+    {
+        provide: MSAL_INTERCEPTOR_CONFIG,
+        useFactory: MSALInterceptorConfigFactory
+    },
+    MsalService,
+    MsalGuard,
+    MsalBroadcastService,
     provideRouter([
       {
         path: 'master',
