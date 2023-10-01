@@ -12,7 +12,8 @@ export function MSALInstanceFactory(): IPublicClientApplication{
   return new PublicClientApplication({ 
     auth: {
       clientId: 'fae13158-a7c9-4fd7-b59a-1193297b3fd0',
-      redirectUri: 'http://localhost:4200'
+      redirectUri: 'http://localhost:4200',
+      postLogoutRedirectUri: 'http://localhost:4200'
     },
     system: {
         allowNativeBroker: false, // Disables native brokering support
@@ -21,13 +22,10 @@ export function MSALInstanceFactory(): IPublicClientApplication{
 }
 
 export function MSALGuardConfigFactory(): MsalGuardConfiguration {
-  return { 
-    interactionType: InteractionType.Redirect,
-    authRequest: {
-      // scopes: [...environment.apiConfig.scopes]
-    },
-    loginFailedRoute: '/login-failed'
-  };
+  const protectedResourceMap = new Map<string, Array<string>>();
+  protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']);
+
+  return { interactionType: InteractionType.Redirect };
 }
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
