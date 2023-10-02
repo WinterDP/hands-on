@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-common';
+import { MaterialModule } from 'src/app/Material/material.module';
 
 @Component({
   selector: 'app-msal-login',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MaterialModule],
   templateUrl: './msal-login.component.html',
   styleUrls: ['./msal-login.component.css'],
 })
