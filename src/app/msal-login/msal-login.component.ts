@@ -14,12 +14,19 @@ export class MsalLoginComponent {
   title = 'MSal-Login';
 
   constructor(private msalService: MsalService){
+    this.IntializeMsalInstance()
+  }
+
+  
+  async IntializeMsalInstance(){
+    await this.msalService.instance.initialize();
   }
 
   Login(){
     this.msalService.loginPopup().subscribe((Response: AuthenticationResult)=>{
       this.msalService.instance.setActiveAccount(Response.account);
-    }) 
+    })
+    console.log("Logado");
   }
 
   Logout(){
