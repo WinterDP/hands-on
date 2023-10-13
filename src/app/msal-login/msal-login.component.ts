@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-common';
@@ -11,27 +11,37 @@ import { MaterialModule } from 'src/app/Material/material.module';
   templateUrl: './msal-login.component.html',
   styleUrls: ['./msal-login.component.css'],
 })
-export class MsalLoginComponent {
+export class MsalLoginComponent implements OnInit {
   title = 'MSal-Login';
 
   constructor(private msalService: MsalService){
     this.IntializeMsalInstance()
   }
 
+  ngOnInit(): void {
+    this.msalService.instance.handleRedirectPromise().then(
+      res => {
+        if(res != null && res.account != null) {
+          this.msalService.instance.setActiveAccount(res.account);
+        }
+      }
+    )
+  }
   
   async IntializeMsalInstance(){
     await this.msalService.instance.initialize();
   }
 
   Login(){
-    this.msalService.loginPopup().subscribe((Response: AuthenticationResult)=>{
-      this.msalService.instance.setActiveAccount(Response.account);
-    })
-    console.log("Logado");
+    this.msalService.loginRedirect();
+    console.log(this.msalService.instance.getActiveAccount()?.name)
+    if (this.IsLoggedIn()) {
+      console.log("Logado");
+    }
   }
 
   Logout(){
-    this.msalService.logout();
+    this.msalService.logoutRedirect();
   }
 
   IsLoggedIn(): boolean{
