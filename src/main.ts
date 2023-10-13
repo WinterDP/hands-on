@@ -68,10 +68,15 @@ bootstrapApplication(AppComponent,{
         // Lazy load the master page library only when needed, avoiding slowing down the loading process.
       },
       {
-        path: '', redirectTo: 'master', pathMatch: 'full'
+        path: 'login',
+        loadChildren: () => import('libs/ui/login/src/lib/lib.routes').then(r => r.LOGIN_ROUTES)
+        // Lazy load the master page library only when needed, avoiding slowing down the loading process.
       },
       {
-        path: '**', redirectTo: 'master', pathMatch: 'full'
+        path: '', redirectTo: 'login', pathMatch: 'full'
+      },
+      {
+        path: '**', redirectTo: 'login', pathMatch: 'full'
       }
     ])
   ]
