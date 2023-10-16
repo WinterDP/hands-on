@@ -1,17 +1,17 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
-import {  HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { MasterPageComponent } from 'libs/ui/master-page/src/lib/master-page/master-page.component';
 
-bootstrapApplication(AppComponent,{
+bootstrapApplication(MasterPageComponent,{
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter([
       {
-        path: 'master',
-        loadChildren: () => import('libs/ui/master-page/src/lib/lib.routes').then(r => r.MASTER_PAGE_ROUTES)
-        // Lazy load the master page library only when needed, avoiding slowing down the loading process.
+        path: 'home', 
+        loadChildren: () => import('libs/ui/master-page/src/lib/landing-page/src/lib/lib.routes').then(r => r.LANDING_PAGE_ROUTES)
+            // Lazy load the library only when needed, avoiding slowing down the loading process.
       },
       {
         path: 'login',
@@ -19,10 +19,10 @@ bootstrapApplication(AppComponent,{
         // Lazy load the master page library only when needed, avoiding slowing down the loading process.
       },
       {
-        path: '', redirectTo: 'login', pathMatch: 'full'
+        path: '', redirectTo: 'home', pathMatch: 'full'
       },
       {
-        path: '**', redirectTo: 'login', pathMatch: 'full'
+        path: '**', redirectTo: 'home', pathMatch: 'full'
       }
     ])
   ]
