@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "guard/msal/msal.guard.spec.ts", "guard/msal/msal.guard.ts"],
   "compilerOptions": {
     "types": ["jest", "node"]
   }
