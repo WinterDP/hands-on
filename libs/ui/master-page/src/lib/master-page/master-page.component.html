@@ -6,10 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <lib-navigation></lib-navigation>
-    <main class="flex justify-center pb-10 pt-20">
-        <router-outlet></router-outlet>
-    </main>
-    <lib-footer></lib-footer>
+    <div class="relative min-h-full bg-white dark:bg-gray-700 dark:border-gray-500">
+        <lib-navigation></lib-navigation>
+        <main class="flex justify-center pb-10 pt-20">
+            <router-outlet></router-outlet>
+        </main>
+        <lib-footer class="absolute bottom-0 w-full"></lib-footer>
+    </div>
 </body>
 </html>

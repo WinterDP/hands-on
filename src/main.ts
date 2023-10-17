@@ -14,7 +14,7 @@ bootstrapApplication(MasterPageComponent,{
       },
       {
         path: 'login',
-        loadChildren: () => import('libs/ui/login/src/lib/lib.routes').then(r => r.LOGIN_ROUTES)
+        loadChildren: () => import('libs/ui/master-page/src/lib/login/src/lib/lib.routes').then(r => r.LOGIN_ROUTES)
         // Lazy load the master page library only when needed, avoiding slowing down the loading process.
       },
       {
