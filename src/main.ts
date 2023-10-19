@@ -18,6 +18,10 @@ bootstrapApplication(MasterPageComponent,{
         // Lazy load the master page library only when needed, avoiding slowing down the loading process.
       },
       {
+        path: 'events-logger',
+        loadChildren: () => import('libs/ui/master-page/src/lib/events-logger-main-page/src/lib/lib.routes').then(r => r.EVENTS_LOGGER_MAIN_PAGE_ROUTES)
+      },
+      {
         path: '', redirectTo: 'home', pathMatch: 'full'
       },
       {
