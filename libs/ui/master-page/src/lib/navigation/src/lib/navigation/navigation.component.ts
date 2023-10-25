@@ -10,4 +10,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent {}
+export class NavigationComponent {
+  menuIsColapsed = true;
+
+  ToggleMenu(): void {
+    this.menuIsColapsed = !this.menuIsColapsed;
+    console.log(this.menuIsColapsed);
+    
+  }
+}
