@@ -48,8 +48,6 @@ body {
 .textLink {
   @apply
   block 
-  px-4 
-  py-2
   text-gray-900
   dark:text-gray-400
   hover:text-blue-700 
@@ -112,4 +110,15 @@ body {
   dark:text-white 
   dark:focus:ring-blue-500
   dark:focus:border-blue-500
+}
+
+.divLine{
+  @apply
+  grid 
+  grid-cols-1 
+  items-center 
+  border-gray-200 
+  border-t 
+  dark:border-gray-700 
+  justify-between
 }
