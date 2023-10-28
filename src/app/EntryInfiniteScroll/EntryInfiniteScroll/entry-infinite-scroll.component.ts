@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import {EntryInfinityScrollService} from 'services/EntryInfiniteScroll/entry-infinity-scroll.service'
@@ -11,7 +11,7 @@ import { EntryComponent } from 'src/app/Entry/entry.component';
   templateUrl: './entry-infinite-scroll.component.html',
   styleUrls: ['./entry-infinite-scroll.component.css'],
 })
-export class EntryInfiniteScrollComponent {
+export class EntryInfiniteScrollComponent implements OnInit {
   items:string[]=[];
   isLoading=false;
   currentPage=1;
@@ -49,7 +49,7 @@ export class EntryInfiniteScrollComponent {
     
   constructor(private entryInfinityScrollService:EntryInfinityScrollService) {}
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.loadData();
   }
 }
