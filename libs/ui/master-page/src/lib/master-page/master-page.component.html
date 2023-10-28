@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<div class="flex flex-col min-h-full bg-white dark:bg-gray-700 dark:border-gray-500">
     <lib-navigation></lib-navigation>
-    <p>master-page works!</p>
-    <lib-card></lib-card>
-    <lib-footer></lib-footer>
-</body>
-</html>
+    <main class="flex justify-center pt-20 pb-20">
+        <router-outlet></router-outlet>
+    </main>
+    <lib-footer class="mt-auto w-full"></lib-footer>
+</div>

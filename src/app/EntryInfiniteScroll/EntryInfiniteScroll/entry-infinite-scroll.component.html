@@ -1,0 +1,9 @@
+<div
+      infinite-scroll
+      [infiniteScrollDistance]="1"
+      [infiniteScrollThrottle]="500"
+      (scrolled)="onScroll()"
+>
+    <app-entry *ngFor="let item of items"></app-entry>
+    <div *ngIf="isLoading">Loading...</div>
+</div>
