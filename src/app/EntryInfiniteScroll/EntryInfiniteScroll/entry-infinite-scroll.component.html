@@ -4,8 +4,6 @@
       [infiniteScrollThrottle]="500"
       (scrolled)="onScroll()"
 >
-    <app-entry class="data-card" *ngFor="let item of items"></app-entry>
-    
-
+    <app-entry *ngFor="let item of items"></app-entry>
     <div *ngIf="isLoading">Loading...</div>
 </div>
