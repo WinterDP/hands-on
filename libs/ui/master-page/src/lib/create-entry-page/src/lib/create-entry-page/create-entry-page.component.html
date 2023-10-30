@@ -1,3 +1,16 @@
-<div class="card">
-    <p class="textBody">create-entry-page works!</p>
-</div>
+<form (submit)="SubmitEntry()" [formGroup]="entryForm" #formDir="ngForm" class="card">
+    <H1 class="textTitle">Create Entry</H1>
+    <div class="pb-5">
+        <label for="createdDate"  class="textLabel">Date of creation</label>
+        <input type="date" formControlName="createdDate" name="createdDate" id="createdDate" class="inputContainer">
+    </div>
+    <div class="pb-5">
+        <label for="description"  class="textLabel">Description</label>
+        <input type="text" formControlName="description" id="description" placeholder="entry description" class="inputContainer">
+    </div>
+    <div class="pb-5">
+        <label for="files"  class="textLabel">Entry files</label>
+        <input type="file" class="inputContainer">
+    </div>
+    <button type="submit" class="button">Submit</button>
+</form>
