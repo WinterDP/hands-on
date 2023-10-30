@@ -60,6 +60,7 @@ body {
   @apply
   block 
   max-w-sm 
+  md:max-w-2xl
   p-6 
   bg-white border 
   border-gray-200 
