@@ -1,27 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { EntryModel } from 'shared/models/entry/entry-model.model'
+import { EntriesGetModel, EntryModel } from 'shared/models/entry/entry-model.model'
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntryInfinityScrollService{
-
-  private entries:EntryModel[] = [];
-  private totalItems=15;
-  private apiURL = 'http://localhost:3000/';
+  private totalItems=150;
+  private apiURL = 'https://localhost:7203/';
   
-
-  LoadEntryes():void{
+  LoadEntries():Observable<EntriesGetModel>{
     // adicionar modulo de entry e alterar retorno
-    //this.http.get<T>(this.apiURL)
-    this.http.get<EntryModel[]>(this.apiURL).subscribe((resp => {
-        this.entries = resp
-        this.totalItems = this.entries.length
-    }));
+    return this.http.get<EntriesGetModel>(this.apiURL + 'api/Entry')
   }
 
   getItems(page=1,itemsPerPage=10):Observable<string[]>{

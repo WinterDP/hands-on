@@ -4,6 +4,9 @@
       [infiniteScrollThrottle]="500"
       (scrolled)="onScroll()"
 >
-    <app-entry *ngFor="let item of items"></app-entry>
+<div *ngFor="let entrie of entriesInPage">
+    <app-entry [description]="entrie.description" ></app-entry>
+</div>
+    
     <div *ngIf="isLoading">Loading...</div>
 </div>
