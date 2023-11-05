@@ -20,7 +20,7 @@ export class CreateEntryPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.entryForm = new FormGroup({
-      createdDate: new FormControl(''),
+      // createdDate: new FormControl(''),
       updatedDate: new FormControl(''),
       description: new FormControl(''),
       files: new FormControl(''),
