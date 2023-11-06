@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from 'libs/ui/master-page/src/lib/footer/src/lib/footer/footer.component';
-import { NavigationComponent } from 'libs/ui/master-page/src/lib//navigation/src/lib/navigation/navigation.component';
-import { CardComponent } from '../Card/card.component';
+import { FooterComponent } from 'libs/Footer/footer/src/lib/footer/footer.component';
+import { NavigationComponent } from 'libs/Navigation/navigation/src/lib/navigation/navigation.component';
 import { MaterialModule } from 'src/app/Material/material.module';
 import { RouterModule } from '@angular/router';
 
@@ -15,7 +14,7 @@ import { RouterModule } from '@angular/router';
     <lib-footer></lib-footer>
   `,
   standalone: true,
-  imports: [CommonModule, FooterComponent, NavigationComponent, CardComponent, MaterialModule, RouterModule],
+  imports: [CommonModule, FooterComponent, NavigationComponent, MaterialModule, RouterModule],
   templateUrl: './master-page.component.html',
   styleUrls: ['./master-page.component.css'],
 })

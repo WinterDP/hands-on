@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import {EntryInfinityScrollService} from 'services/EntryInfiniteScroll/entry-infinity-scroll.service'
-import { EntryComponent } from 'src/app/Entry/entry.component';
+import { EntryComponent } from 'libs/Entry/entry/src/lib/entry/entry.component';
 import { EntryModel } from 'shared/models/entry/entry-model.model'
+import { delay } from 'rxjs';
 
 @Component({
-  selector: 'app-entry-infinite-scroll',
+  selector: 'lib-entry-infinite-scroll',
   standalone: true,
   imports: [CommonModule, InfiniteScrollModule, EntryComponent],
   templateUrl: './entry-infinite-scroll.component.html',
@@ -25,7 +26,6 @@ export class EntryInfiniteScrollComponent implements OnInit {
 
    // it will be called when this component gets initialized.
   loadData= ()=>{
-    this.toggleLoading();
     this.entryInfinityScrollService.LoadEntries().subscribe({
       next: resp => {
         this.entries = resp.result;
@@ -41,19 +41,19 @@ export class EntryInfiniteScrollComponent implements OnInit {
     
     // this method will be called on scrolling the page
   appendData= ()=>{
-    if (this.itemsPerPage*this.currentPage > this.entries.length) {
-      this.entriesInPage = this.entries
-      this.toggleLoading()
-      return;
-    }
-
-    for (let index = this.loadedItems; index < this.itemsPerPage*this.currentPage; index++) {
-      this.entriesInPage.push(this.entries[index])
-    }
-    this.loadedItems+= this.itemsPerPage;
-    console.log(this.entries);
-    console.log(this.entriesInPage);
-    this.toggleLoading()
+    this.toggleLoading();
+    setTimeout(()=>{ 
+      if (this.itemsPerPage*this.currentPage > this.entries.length) {
+        this.entriesInPage = this.entries;
+      }else{
+        for (let index = this.loadedItems; index < this.itemsPerPage*this.currentPage; index++) {
+          this.entriesInPage.push(this.entries[index])
+        }
+        this.loadedItems+= this.itemsPerPage;
+      }
+      console.log(this.isLoading);
+      this.toggleLoading();
+     }, 500)
   }
 
   onScroll= ()=>{
