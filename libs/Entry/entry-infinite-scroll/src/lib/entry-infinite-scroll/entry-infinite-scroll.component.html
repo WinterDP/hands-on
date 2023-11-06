@@ -1,11 +1,11 @@
 <div
       infinite-scroll
-      [infiniteScrollDistance]="1"
+      [infiniteScrollDistance]="0.5"
       [infiniteScrollThrottle]="500"
       (scrolled)="onScroll()"
 >
 <div *ngFor="let entrie of entriesInPage">
-    <app-entry [description]="entrie.description" ></app-entry>
+    <lib-entry [description]="entrie.description" ></lib-entry>
 </div>
     
     <div *ngIf="isLoading">Loading...</div>

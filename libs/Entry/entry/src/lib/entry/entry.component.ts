@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 
 @Component({
-  selector: 'app-entry',
+  selector: 'lib-entry',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './entry.component.html',

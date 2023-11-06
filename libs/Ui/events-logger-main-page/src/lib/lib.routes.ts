@@ -5,6 +5,6 @@ export const EVENTS_LOGGER_MAIN_PAGE_ROUTES: Route[] = [
   { path: '', component: EventsLoggerMainPageComponent },
   {
     path: 'create-entry',
-    loadChildren: () => import('libs/ui/master-page/src/lib/create-entry-page/src/lib/lib.routes').then(r => r.CREATE_ENTRY_PAGE_ROUTES)
+    loadChildren: () => import('libs/Ui/create-entry-page/src/lib/lib.routes').then(r => r.CREATE_ENTRY_PAGE_ROUTES)
   }
 ];

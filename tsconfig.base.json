@@ -18,6 +18,10 @@
       "create-entry-page": [
         "libs/ui/master-page/src/lib/create-entry-page/src/index.ts"
       ],
+      "entry": ["libs/entry/entry/src/index.ts"],
+      "entry-infinite-scroll": [
+        "libs/entry/entry-infinite-scroll/src/index.ts"
+      ],
       "events-logger-main-page": [
         "libs/ui/master-page/src/lib/events-logger-main-page/src/index.ts"
       ],
