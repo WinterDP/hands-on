@@ -1,0 +1,21 @@
+<form (submit)="SignUp()" [formGroup]="signUpForm" #formDir="ngForm" class="card">
+    <H1 class="textTitle">Sing Up</H1>
+    <div class="pb-5">
+        <label for="email"  class="textLabel">E-mail</label>
+        <input [ngClass]="{'inputContainerError':(formDir.submitted && email.invalid)}" type="email" id="email" formControlName="email" placeholder="email" class="inputContainer">
+        <p *ngIf="formDir.submitted && email.invalid" class="textFormError">E-mail is required</p>
+    </div>
+    <div class="pb-5">
+        <label for="password" class="textLabel">Password</label>
+        <input [ngClass]="{'inputContainerError':(formDir.submitted && password.invalid)}" type="password" id="password" formControlName="password" placeholder="password" class="inputContainer">
+        <p *ngIf="formDir.submitted && password.invalid" class="textFormError">Password is required</p>
+    </div>
+    <div class="pb-5">
+        <label for="repeatPassword" class="textLabel">Repeat password</label>
+        <input [ngClass]="{'inputContainerError':(formDir.submitted && (repeatPassword.invalid || (repeatPassword !== password)))}" type="password" id="repeatPassword" formControlName="repeatPassword" placeholder="repeat password" class="inputContainer">
+        <p *ngIf="formDir.submitted && repeatPassword.invalid" class="textFormError">Repeat your password</p>
+        <p *ngIf="repeatPassword.value !== '' && (repeatPassword.value !== password.value)" class="textFormError">Passwords do not match</p>
+    </div>
+    <button type="submit" class="button">Sign up</button>
+    <a routerLink="/login" class="textLink p-2">already have an account? log in</a>
+</form>

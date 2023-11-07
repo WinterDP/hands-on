@@ -14,13 +14,11 @@ export class CreateEntryPageComponent implements OnInit {
   public entryForm!: FormGroup;
 
   SubmitEntry():void{
-    console.log("enviou para requisição");
     this.createEntryService.PostEntry(this.entryForm.value);
   }
 
   ngOnInit(): void {
     this.entryForm = new FormGroup({
-      // createdDate: new FormControl(''),
       updatedDate: new FormControl(''),
       description: new FormControl(''),
       files: new FormControl(''),
