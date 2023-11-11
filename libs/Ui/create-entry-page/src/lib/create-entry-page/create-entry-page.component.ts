@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
-import { CreateEntryService } from 'services/create-entry-service/create-entry-service.service'
+import { CreateEntryService } from 'services/Entry/create-entry-service/create-entry-service.service';
 
 @Component({
   selector: 'lib-create-entry-page',

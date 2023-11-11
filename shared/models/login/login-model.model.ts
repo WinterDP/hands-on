@@ -1,4 +1,4 @@
-export class loginModel{
+export class LoginModel{
     username! :string;
     firstName! :string;
     lastName! :string;

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
-import { loginModel } from 'shared/models/Login/login-model.model'
+import { LoginModel } from 'shared/models/Login/login-model.model';
+import { LoginHandlerService } from 'services/Login/login-handler/login-handler-service.service';
 
 @Component({
   selector: 'lib-signup-form',
@@ -14,14 +15,14 @@ import { loginModel } from 'shared/models/Login/login-model.model'
 export class SignUpFormComponent implements OnInit {
   signUpForm !: FormGroup;
 
-  newSignUpUser : loginModel = {
+  newSignUpUser : LoginModel = {
     "username": "",
     "firstName": "",
     "lastName": "",
     "email": "",
     "password": ""
   };
-  signUpUsers : loginModel[] = [];
+  signUpUsers : LoginModel[] = [];
   UserAreadyExists = false;
 
   // GETTERs
@@ -49,7 +50,7 @@ export class SignUpFormComponent implements OnInit {
     return this.signUpForm.get('repeatPassword')!;
   }
 
-  public get SignUpUsers(): loginModel[]{
+  public get SignUpUsers(): LoginModel[]{
     return this.signUpUsers;
   }
 
@@ -59,8 +60,8 @@ export class SignUpFormComponent implements OnInit {
     if(this.signUpForm.invalid || (this.Password.value !== this.RepeatPassword.value))
       return;
 
-    if(this.CheckIfUserAlreadyExists())
-      return;
+    //if(this.CheckIfUserAlreadyExists())
+      //return;
 
     // This will be improved when the backend is updated
 
@@ -70,10 +71,9 @@ export class SignUpFormComponent implements OnInit {
     this.newSignUpUser.lastName = this.LastName.value;
     this.newSignUpUser.password = this.Password.value;
     this.newSignUpUser.email = this.Email.value;
-    
-    this.signUpUsers.push(this.newSignUpUser);
-    localStorage.setItem('signUpUsers', JSON.stringify(this.signUpUsers));
-    
+
+    this.loginHandlerService.Register(this.newSignUpUser)
+
     this.newSignUpUser = {
       "username": "",
       "firstName": "",
@@ -81,7 +81,7 @@ export class SignUpFormComponent implements OnInit {
       "email": "",
       "password": ""
     };
-    this.router.navigate(['/login']);
+    //this.router.navigate(['/login']);
   }
 
   CheckIfUserAlreadyExists():boolean {
@@ -90,7 +90,7 @@ export class SignUpFormComponent implements OnInit {
     return this.UserAreadyExists;
   }
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private loginHandlerService:LoginHandlerService){}
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({

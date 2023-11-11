@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-import {EntryInfinityScrollService} from 'services/EntryInfiniteScroll/entry-infinity-scroll.service'
+import {EntryInfinityScrollService} from 'services/Entry/EntryInfiniteScroll/entry-infinity-scroll.service'
 import { EntryComponent } from 'libs/Entry/entry/src/lib/entry/entry.component';
 import { EntryModel } from 'shared/models/entry/entry-model.model'
 import { delay } from 'rxjs';
