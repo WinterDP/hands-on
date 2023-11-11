@@ -1,20 +1,38 @@
 <form (submit)="SignUp()" [formGroup]="signUpForm" #formDir="ngForm" class="card">
     <H1 class="textTitle">Sing Up</H1>
+    <p *ngIf="formDir.submitted && UserAreadyExists" class="textFormError">E-mail or Username already exists</p>
+    <div class="pb-5">
+        <label for="username"  class="textLabel">Username</label>
+        <input [ngClass]="{'inputContainerError':(formDir.submitted && Email.invalid)}" type="text" id="username" formControlName="username" placeholder="Username" class="inputContainer">
+        <p *ngIf="formDir.submitted && Username.invalid" class="textFormError">Username is required</p>
+    </div>
+    <div class="pb-5 flex">
+        <div  class="pr-2">
+            <label for="firstName"  class="textLabel">First name</label>
+            <input [ngClass]="{'inputContainerError':(formDir.submitted && FirstName.invalid)}" type="text" id="firstName" formControlName="firstName" placeholder="first name" class="inputContainer w-1/2">
+            <p *ngIf="formDir.submitted && FirstName.invalid" class="textFormError">First name is required</p>
+        </div>
+        <div class="pl-2">
+            <label for="lastName"  class="textLabel">Last Name</label>
+            <input [ngClass]="{'inputContainerError':(formDir.submitted && LastName.invalid)}" type="text" id="lastName" formControlName="lastName" placeholder="last name" class="inputContainer w-1/2">
+            <p *ngIf="formDir.submitted && LastName.invalid" class="textFormError">Last name is required</p>
+        </div>
+    </div>
     <div class="pb-5">
         <label for="email"  class="textLabel">E-mail</label>
-        <input [ngClass]="{'inputContainerError':(formDir.submitted && email.invalid)}" type="email" id="email" formControlName="email" placeholder="email" class="inputContainer">
-        <p *ngIf="formDir.submitted && email.invalid" class="textFormError">E-mail is required</p>
+        <input [ngClass]="{'inputContainerError':(formDir.submitted && Email.invalid)}" type="email" id="email" formControlName="email" placeholder="email" class="inputContainer">
+        <p *ngIf="formDir.submitted && Email.invalid" class="textFormError">E-mail is required</p>
     </div>
     <div class="pb-5">
         <label for="password" class="textLabel">Password</label>
-        <input [ngClass]="{'inputContainerError':(formDir.submitted && password.invalid)}" type="password" id="password" formControlName="password" placeholder="password" class="inputContainer">
-        <p *ngIf="formDir.submitted && password.invalid" class="textFormError">Password is required</p>
+        <input [ngClass]="{'inputContainerError':(formDir.submitted && Password.invalid)}" type="password" id="password" formControlName="password" placeholder="password" class="inputContainer">
+        <p *ngIf="formDir.submitted && Password.invalid" class="textFormError">Password is required</p>
     </div>
     <div class="pb-5">
         <label for="repeatPassword" class="textLabel">Repeat password</label>
-        <input [ngClass]="{'inputContainerError':(formDir.submitted && (repeatPassword.invalid || (repeatPassword !== password)))}" type="password" id="repeatPassword" formControlName="repeatPassword" placeholder="repeat password" class="inputContainer">
-        <p *ngIf="formDir.submitted && repeatPassword.invalid" class="textFormError">Repeat your password</p>
-        <p *ngIf="repeatPassword.value !== '' && (repeatPassword.value !== password.value)" class="textFormError">Passwords do not match</p>
+        <input [ngClass]="{'inputContainerError':((formDir.submitted && RepeatPassword.invalid) || (RepeatPassword.value !== '' && (RepeatPassword.value !== Password.value)))}" type="password" id="repeatPassword" formControlName="repeatPassword" placeholder="repeat password" class="inputContainer">
+        <p *ngIf="formDir.submitted && RepeatPassword.invalid" class="textFormError">Repeat your password</p>
+        <p *ngIf="RepeatPassword.value !== '' && (RepeatPassword.value !== Password.value)" class="textFormError">Passwords do not match</p>
     </div>
     <button type="submit" class="button">Sign up</button>
     <a routerLink="/login" class="textLink p-2">already have an account? log in</a>

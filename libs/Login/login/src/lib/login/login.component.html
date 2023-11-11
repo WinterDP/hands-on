@@ -2,14 +2,14 @@
     <H1 class="textTitle">Login</H1>
     <div class="pb-5">
         <label for="email"  class="textLabel">Email</label>
-        <input [ngClass]="{'inputContainerError':(formDir.submitted && email.invalid)}" type="email" id="email" formControlName="email" placeholder="email" class="inputContainer">
-        <p *ngIf="formDir.submitted && email.invalid" class="textFormError">E-mail is required</p>
+        <input [ngClass]="{'inputContainerError':(formDir.submitted && Email.invalid)}" type="email" id="email" formControlName="email" placeholder="email" class="inputContainer">
+        <p *ngIf="formDir.submitted && Email.invalid" class="textFormError">E-mail is required</p>
     </div>
     <div class="pb-5">
         <label for="password" class="textLabel">Password</label>
-        <input [ngClass]="{'inputContainerError':(formDir.submitted && password.invalid)}" type="password" id="password" formControlName="password" placeholder="password" class="inputContainer">
-        <p *ngIf="formDir.submitted && password.invalid" class="textFormError">Password is required</p>
+        <input [ngClass]="{'inputContainerError':(formDir.submitted && Password.invalid)}" type="password" id="password" formControlName="password" placeholder="password" class="inputContainer">
+        <p *ngIf="formDir.submitted && Password.invalid" class="textFormError">Password is required</p>
     </div>
     <button type="submit" class="button">Login</button>
-    <a routerLink="/singup" class="textLink p-2">doesn't have an account? sign up</a>
+    <a routerLink="/signup" class="textLink p-2">doesn't have an account? sign up</a>
 </form>

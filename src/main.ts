@@ -21,7 +21,7 @@ bootstrapApplication(MasterPageComponent,{
         loadChildren: () => import('libs/Ui/events-logger-main-page/src/lib/lib.routes').then(r => r.EVENTS_LOGGER_MAIN_PAGE_ROUTES)
       },
       {
-        path: 'singup',
+        path: 'signup',
         loadChildren: () => import('libs/Ui/signup-page/src/lib/lib.routes').then(r => r.SIGNUP_PAGE_ROUTES)
       },
       {

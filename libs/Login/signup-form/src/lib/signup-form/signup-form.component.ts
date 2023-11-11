@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
+import { loginModel } from 'shared/models/Login/login-model.model'
 
 @Component({
   selector: 'lib-signup-form',
@@ -11,30 +12,103 @@ import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormControl } 
   styleUrls: ['./signup-form.component.css'],
 })
 export class SignUpFormComponent implements OnInit {
-  public signUpForm !: FormGroup;
+  signUpForm !: FormGroup;
+
+  newSignUpUser : loginModel = {
+    "username": "",
+    "firstName": "",
+    "lastName": "",
+    "email": "",
+    "password": ""
+  };
+  signUpUsers : loginModel[] = [];
+  UserAreadyExists = false;
+
+  // GETTERs
+  get Username(){
+    return this.signUpForm.get('username')!;
+  }
+
+  get FirstName(){
+    return this.signUpForm.get('firstName')!;
+  }
+
+  get LastName(){
+    return this.signUpForm.get('lastName')!;
+  }
+
+  get Email(){
+    return this.signUpForm.get('email')!;
+  }
+
+  get Password(){
+    return this.signUpForm.get('password')!;
+  }
+
+  get RepeatPassword(){
+    return this.signUpForm.get('repeatPassword')!;
+  }
+
+  public get SignUpUsers(): loginModel[]{
+    return this.signUpUsers;
+  }
+
+  // METHODS
 
   SignUp(){
-    // singup form
+    if(this.signUpForm.invalid || (this.Password.value !== this.RepeatPassword.value))
+      return;
+
+    if(this.CheckIfUserAlreadyExists())
+      return;
+
+    // This will be improved when the backend is updated
+
+    // prepare User for the backend injection
+    this.newSignUpUser.username = this.Username.value;
+    this.newSignUpUser.firstName = this.FirstName.value;
+    this.newSignUpUser.lastName = this.LastName.value;
+    this.newSignUpUser.password = this.Password.value;
+    this.newSignUpUser.email = this.Email.value;
+    
+    this.signUpUsers.push(this.newSignUpUser);
+    localStorage.setItem('signUpUsers', JSON.stringify(this.signUpUsers));
+    
+    this.newSignUpUser = {
+      "username": "",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "password": ""
+    };
+    this.router.navigate(['/login']);
   }
+
+  CheckIfUserAlreadyExists():boolean {
+    const userExistis = this.signUpUsers.find(user => user.email === this.Email.value || user.email === this.Username.value);
+    this.UserAreadyExists = userExistis != null; 
+    return this.UserAreadyExists;
+  }
+
+  constructor(private router: Router){}
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
       repeatPassword: new FormControl('', [Validators.required]),
     });
-  }
 
-  get email(){
-    return this.signUpForm.get('email')!;
-  }
+    // Will receive sign up accounts from the backend
+    const localData = localStorage.getItem('signUpUsers');
 
-  get password(){
-    return this.signUpForm.get('password')!;
-  }
+    if (localData != null) {
+      this.signUpUsers = JSON.parse(localData);
+    }
 
-  get repeatPassword(){
-    return this.signUpForm.get('repeatPassword')!;
   }
 
 }
