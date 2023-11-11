@@ -1,4 +1,7 @@
-export class loginModel{
-    email: string;
-    password: string;
+export class LoginModel{
+    username! :string;
+    firstName! :string;
+    lastName! :string;
+    email!: string;
+    password!: string;
 }

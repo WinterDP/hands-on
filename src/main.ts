@@ -14,12 +14,15 @@ bootstrapApplication(MasterPageComponent,{
       },
       {
         path: 'login',
-        loadChildren: () => import('libs/Ui/login/src/lib/lib.routes').then(r => r.LOGIN_ROUTES)
-        // Lazy load the master page library only when needed, avoiding slowing down the loading process.
+        loadChildren: () => import('libs/Ui/login-page/src/lib/lib.routes').then(r => r.LOGIN_PAGE_ROUTES)
       },
       {
         path: 'events-logger',
         loadChildren: () => import('libs/Ui/events-logger-main-page/src/lib/lib.routes').then(r => r.EVENTS_LOGGER_MAIN_PAGE_ROUTES)
+      },
+      {
+        path: 'signup',
+        loadChildren: () => import('libs/Ui/signup-page/src/lib/lib.routes').then(r => r.SIGNUP_PAGE_ROUTES)
       },
       {
         path: '', redirectTo: 'home', pathMatch: 'full'
